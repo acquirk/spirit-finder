@@ -1,66 +1,45 @@
-Store Locator Library for the Google Maps JavaScript API v3
-==============
+Spirit Finder
 
-This library enables developers to easily build store locator-type applications using the Google Maps JavaScript API v3.
-![Analytics](https://maps-ga-beacon.appspot.com/UA-12846745-20/js-store-locator/readme?pixel)
+About
+Spirit Finder is a javascript library built on an open-source library by Google Maps. It can be used by breweries, distilleries, wineries, and other craft brands as a website plugin. 
 
-The library provides the following features:
+On the frontend, the goal is to allow customers to easily find your products wherever they are.
 
-* Pluggable data source – display stores from a data source of your choosing
-* HTML5 Geolocation – determines a good initial viewport for the user
-* Info window – shows details about a store
-* Street View
-* Extensible – customise your own markers, info windows, etc.
-* Fully-featured side panel, providing:
-  * Feature filtering
-  * Autocomplete search
-  * List of nearby stores
-  * Directions
+On the backend, the goal is to allow marketing or sales directors to upload placement data from their distributors and have it automatically populate the Spirit Finder page on their live website.
 
-## Examples/Demos
 
-The best way to become acquainted with the library is to see some of the examples:
+Info
+Here is the Google Maps js-store-locator library:
+https://github.com/googlemaps/js-store-locator
 
-1. [panel.html](https://googlemaps.github.io/js-store-locator/examples/panel.html) – A simple store locator, including panel. Data is fetched from a static CSV file.
-2. [dynamic.html](https://googlemaps.github.io/js-store-locator/examples/dynamic.html) – Same as above, except stores are fetched dynamically from a JSONP web service.
-3. [gme.html](https://googlemaps.github.io/js-store-locator/examples/gme.html) – Same as above, except stores are fetched dynamically from Google Maps Engine.
-4. [custom.html](https://googlemaps.github.io/js-store-locator/examples/custom.html) – Various customisations to the default UI including custom markers and info window.
-5. [places.html](https://googlemaps.github.io/js-store-locator/examples/places.html) – Places are searched using the Google Places API, and displayed as a store locator.
+And here is the example I pulled from:
+https://googlemaps.github.io/js-store-locator/examples/panel.html
 
-## Reference documentation
+Here is my current implementation:
+http://cardinalspirits.com/spirit-finder
 
-For detailed documentation on the library, including classes, events and sample usage, please see the [reference documentation](https://googlemaps.github.io/js-store-locator/reference.html).
+The JS starts at line 80 on that page, if you want to dig through the javascript files (all hosted at assets.cardinalspirits.com, an apache webserver I host at Dreamhost).
 
-## Quick Start
+The static CSV is loaded from http://assets.cardinalspirits.com/spirit-static-ds.js
 
-To get started, include the [store-locator.min.js](https://github.com/googlemaps/js-store-locator/blob/gh-pages/dist/store-locator.min.js) file on your HTML page. A set of [CSS styles](https://github.com/googlemaps/js-store-locator/blob/gh-pages/css/storelocator.css) are also available, which provide styling for store details and side panel.
+The static CSV lives here: http://assets.cardinalspirits.com/cs-placements-test.csv
 
-The library's functions are contained under the `storeLocator` namespace. The main class is called `storeLocator.View`. A `View` has two required parameters, a `google.maps.Map`, and a `storeLocator.DataFeed`.
+Current status: not working
 
-A `DataFeed` is an object with the function `getStores`. This function is called each time the map needs an update. A simple example of a `DataFeed` can be found in the [reference](https://googlemaps.github.io/js-store-locator/reference.html#storeLocator.DataFeed).
+I changed a few variables in the spirit-static-ds.js file from Medicare and Audio, to Coffee and Vodka. 
 
-## Contributing
+Fixed: Cross-domain permissions issue (used .htaccess to solve)
 
-Want to contribute? Check out the [contributing guide](CONTRIBUTING.md)!
+Reference:
 
-## Compiling the project
+JS-Store-Locator reference:
+https://googlemaps.github.io/js-store-locator/reference.html
 
-    $ ./gradlew assemble
+Building a store locator application with the Google Maps API and Google Cloud SQL:
+https://storage.googleapis.com/support-kms-prod/C4EA761B96A0D8EA170411A34ACE3BB7C9C1
 
-    > gradlew.bat assemble
 
-## License
 
-Copyright 2014 Google Inc. All rights reserved.
+Future Development
+Ideally there would be an upload mechanism that parses the data from a CSV and associates each column with an associated database field. This would alleviate potential issues with reformatting CSV data from different distributors, since it is unlikely that placement reports from different distributors would have the same column headings. 
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
